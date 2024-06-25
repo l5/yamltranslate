@@ -1,0 +1,20 @@
+{
+  "name": "yamltranslate",
+  "version": "0.0.4",
+  "description": "Condensing a multilingual yaml file into a single language yaml file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sirius Plans Limited",
+  "license": "ISC",
+  "keywords": [
+    "YAML",
+    "translation",
+    "internationalization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/l5/yamltranslate"
+  }
+}
