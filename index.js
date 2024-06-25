@@ -1,7 +1,3 @@
-function yamlTranslate() {
-    return "hello NPM"
-}
-
 let allLanguagesUsed = []
 
 function addLanguageToUsedList(languageName) {
@@ -12,7 +8,7 @@ function addLanguageToUsedList(languageName) {
 function getAvailableLanguageList() {
     return allLanguagesUsed
 }
-function changeLang(yamlObject, destLg) {
+function getYamlContent(yamlObject, destLg) {
     return changeYamlLanguage(yamlObject, destLg)
 }
 function changeYamlLanguage(yamlObject, destLg) {
@@ -71,5 +67,4 @@ function changeYamlLanguage(yamlObject, destLg) {
     return yamlObject
 }
 
-// module.exports = changeLang, getAvailableLanguageList
-export default changeLang
+export default getYamlContent

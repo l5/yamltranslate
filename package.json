@@ -1,6 +1,6 @@
 {
   "name": "yamltranslate",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Condensing a multilingual yaml file into a single language yaml file",
   "main": "index.js",
   "scripts": {
