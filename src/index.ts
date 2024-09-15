@@ -1,4 +1,4 @@
-class YamlTranslate {
+export class YamlTranslate {
 
     private allLanguagesUsed:string[] = []
 
