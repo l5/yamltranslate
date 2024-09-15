@@ -1,0 +1,11 @@
+page:
+  title: Help
+  other:
+    deeper:
+      nestled:
+        description:
+          translations:
+            default: Our very helpful Help section helps helping application consumers in a helpful way.
+            de_DE: Unser äußerst hilfreicher Hilfebereich unterstützt Anwendungsnutzer auf hilfreiche Weise.
+            fr_FR: Notre section d'aide très utile aide les utilisateurs d'applications à s'en servir de manière utile.
+  

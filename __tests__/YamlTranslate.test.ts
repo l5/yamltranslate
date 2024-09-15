@@ -1,4 +1,7 @@
 import { YamlTranslate } from '../src/index';
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 describe('YamlTranslate', () => {
   let yamlTranslate: YamlTranslate;
@@ -106,4 +109,18 @@ describe('YamlTranslate', () => {
         farewell: 'Goodbye'
       });
     });
+
+    it('should return the correct YAML content for language de_DE', () => {
+        const inputFilePath = path.join(__dirname, 'fixtures', 'testfile1-input.yaml');
+        const outputFilePath = path.join(__dirname, 'fixtures', 'testfile1-output.yaml');
+    
+        const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
+        const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
+    
+        const yamlObject = yaml.load(inputYaml) as any;
+        const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+    
+        const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
+        expect(result).toEqual(expectedOutputObject);
+      });
   });
