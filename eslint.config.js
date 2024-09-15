@@ -1,35 +1,26 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import { ESLint } from "eslint";
+import js from "@eslint/js";
+import ts from "@typescript-eslint/eslint-plugin";
+import parser from "@typescript-eslint/parser";
 
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts}"]},
-  {languageOptions: { globals: globals.node }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  new ESLint({
-    overrideConfig: {
-      parser: "@typescript-eslint/parser",
-      plugins: ["@typescript-eslint"],
-      extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
-      ],
-      env: {
-        browser: true,
-        es2021: true,
-        node: true
-      },
+  {
+    files: ["**/*.{js,mjs,cjs,ts}"],
+    languageOptions: {
+      globals: globals.node,
+      parser: parser,
       parserOptions: {
-        ecmaVersion: 12,
+        ecmaVersion: 2021,
         sourceType: "module"
-      },
-      rules: {
-        // Add your custom rules here
       }
     },
-    extensions: [".ts"]
-  })
+    plugins: {
+      "@typescript-eslint": ts
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...ts.configs.recommended.rules,
+      // Add your custom rules here
+    }
+  }
 ];
