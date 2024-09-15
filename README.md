@@ -38,17 +38,17 @@ page:
 ```
 The first language is the default value in case the translation for the requested language is not available.
 
-Result after applying yamltranslate (en_EN):
+Result after applying `yamltranslate("en_EN")`:
 ```yaml
 page:
   title: Help
 ```
-Result after applying yamltranslate (de_DE):
+Result after applying `yamltranslate("de_DE")`:
 ```yaml
 page:
   title: Hilfe
 ```
-Result after applying yamltranslate (xx_XX) (this defaults to "default"):
+Result after applying `yamltranslate("xx_XX")` (this defaults to "default"):
 ```yaml
 page:
   title: Help
@@ -98,4 +98,20 @@ page:
       default: Our very helpful Help section helps helping application consumers in a helpful way.
       de_DE: Unser äußerst hilfreicher Hilfebereich unterstützt Anwendungsnutzer auf hilfreiche Weise.
       fr_FR: Notre section d'aide très utile aide les utilisateurs d'applications à s'en servir de manière utile.
+```
+
+# Getting started
+
+The package is available at https://www.npmjs.com/package/yamltranslate ; please follow the usual instructions to install an npm package.
+
+Example:
+
+```
+npm i yamltranslate
+```
+
+Usage example:
+
+```
+
 ```
