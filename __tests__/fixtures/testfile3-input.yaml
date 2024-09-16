@@ -1,0 +1,95 @@
+page:
+  title:
+    translations:
+      default: Help
+      en_EN: Help
+      de_DE: Hilfe
+      fr_FR: Aide
+  other:
+    deeper:
+      righthere: Milli Vanilli
+      cost: 50
+      nestled:
+        description:
+          translations:
+            - language: default
+              text: |
+                Our very helpful Help section helps helping application consumers in a helpful way.
+                This section includes detailed guides and FAQs to assist users.
+            - language: de_DE
+              text: |
+                Unser äußerst hilfreicher Hilfebereich unterstützt Anwendungsnutzer auf hilfreiche Weise.
+                Dieser Abschnitt enthält detaillierte Anleitungen und häufig gestellte Fragen, um Benutzern zu helfen.
+            - language: fr_FR
+              text: |
+                Notre section d'aide très utile aide les utilisateurs d'applications à s'en servir de manière utile.
+                Cette section comprend des guides détaillés et des FAQ pour aider les utilisateurs.
+  metadata:
+    author: Hans Müller
+    created: 2023-10-01
+    version: 1.0
+    isPublished: true
+    tags:
+      - translations:
+          default: help
+          de_DE: hilfe
+          fr_FR: aide
+      - translations:
+          default: support
+          de_DE: unterstützung
+          fr_FR: soutien
+  content:
+    sections:
+      - title:
+          translations:
+            default: Introduction
+            en_EN: Introduction
+            de_DE: Einführung
+            fr_FR: Introduction
+        body:
+          translations:
+            - language: de_DE
+              text: |
+                Willkommen im Hilfebereich. Hier finden Sie alle Informationen, die Sie benötigen.
+                Dieser Abschnitt soll umfassende Unterstützung bieten.
+            - language: fr_FR
+              text: |
+                Bienvenue dans la section d'aide. Vous y trouverez toutes les informations dont vous avez besoin.
+                Cette section est conçue pour fournir un support complet.
+      - title:
+          translations:
+            default: FAQ
+            de_DE: Häufig gestellte Fragen
+            fr_FR: Questions fréquentes
+        body:
+          translations:
+            - language: default
+              text: |
+                Here are some frequently asked questions and their answers.
+                If you have more questions, feel free to contact us.
+            - language: de_DE
+              text: |
+                Hier sind einige häufig gestellte Fragen und deren Antworten.
+                Wenn Sie weitere Fragen haben, können Sie uns gerne kontaktieren.
+            - language: fr_FR
+              text: |
+                Voici quelques questions fréquemment posées et leurs réponses.
+                Si vous avez d'autres questions, n'hésitez pas à nous contacter.
+      - title: No Translations Here
+        body: This section has no translations.
+  footer:
+    contact:
+      translations:
+        - language: default
+          text: Contact Us
+        - language: de_DE
+          text: Kontaktieren Sie uns
+    address:
+      translations:
+        default: 123 Main St, Anytown, USA
+        de_DE: Hauptstraße 123, Irgendwo, Deutschland
+    phone:
+      translations:
+        default: +1-800-555-1234
+        de_DE: +49-800-555-1234
+        fr_FR: +33-800-555-1234

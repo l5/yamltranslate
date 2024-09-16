@@ -37,104 +37,123 @@ describe('YamlTranslate', () => {
 });
 
 describe('YamlTranslate', () => {
-    let yamlTranslate: YamlTranslate;
-  
-    beforeEach(() => {
-      yamlTranslate = new YamlTranslate();
-    });
-  
-    it('should return the YAML content in the specified language', () => {
-      const yamlObject = {
-        greeting: {
-          translations: [
-            { language: 'en', text: 'Hello' },
-            { language: 'fr', text: 'Bonjour' },
-            { language: 'default', text: 'Hi' }
-          ]
-        }
-      };
-      const result = yamlTranslate.getYamlContent(yamlObject, 'fr');
-      expect(result).toEqual({
-        greeting: 'Bonjour'
-      });
-    });
-  
-    it('should return the YAML content in the default language if the specified language is not found', () => {
-      const yamlObject = {
-        greeting: {
-          translations: [
-            { language: 'en', text: 'Hello' },
-            { language: 'default', text: 'Hi' }
-          ]
-        }
-      };
-      const result = yamlTranslate.getYamlContent(yamlObject, 'fr');
-      expect(result).toEqual({
-        greeting: 'Hi'
-      });
-    });
-  
-    it('should handle nested YAML objects', () => {
-      const yamlObject = {
-        greeting: {
-          translations: [
-            { language: 'en', text: 'Hello' },
-            { language: 'fr', text: 'Bonjour' },
-            { language: 'default', text: 'Hi' }
-          ]
-        },
-        farewell: {
-          translations: [
-            { language: 'en', text: 'Goodbye' },
-            { language: 'fr', text: 'Au revoir' },
-            { language: 'default', text: 'Bye' }
-          ]
-        }
-      };
-      const result = yamlTranslate.getYamlContent(yamlObject, 'en');
-      expect(result).toEqual({
-        greeting: 'Hello',
-        farewell: 'Goodbye'
-      });
-    });
-  
-    it('should handle YAML objects without translations', () => {
-      const yamlObject = {
-        greeting: 'Hello',
-        farewell: 'Goodbye'
-      };
-      const result = yamlTranslate.getYamlContent(yamlObject, 'en');
-      expect(result).toEqual({
-        greeting: 'Hello',
-        farewell: 'Goodbye'
-      });
-    });
+  let yamlTranslate: YamlTranslate;
 
-    it('should return the correct YAML content for language de_DE (testfile1)', () => {
-        const inputFilePath = path.join(__dirname, 'fixtures', 'testfile1-input.yaml');
-        const outputFilePath = path.join(__dirname, 'fixtures', 'testfile1-output.yaml');
-    
-        const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
-        const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
-    
-        const yamlObject = yaml.load(inputYaml) as any;
-        const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
-    
-        const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
-        expect(result).toEqual(expectedOutputObject);
-      });
-
-      it('should return the correct YAML content for language de_DE (testfile2)', () => {
-        const inputFilePath = path.join(__dirname, 'fixtures', 'testfile2-input.yaml');
-        const outputFilePath = path.join(__dirname, 'fixtures', 'testfile2-output.yaml');
-    
-        const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
-        const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
-    
-        const yamlObject = yaml.load(inputYaml) as any;
-        const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
-    
-        const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
-        expect(result).toEqual(expectedOutputObject);
-      });
+  beforeEach(() => {
+    yamlTranslate = new YamlTranslate();
   });
+
+  it('should return the YAML content in the specified language', () => {
+    const yamlObject = {
+      greeting: {
+        translations: [
+          { language: 'en', text: 'Hello' },
+          { language: 'fr', text: 'Bonjour' },
+          { language: 'default', text: 'Hi' }
+        ]
+      }
+    };
+    const result = yamlTranslate.getYamlContent(yamlObject, 'fr');
+    expect(result).toEqual({
+      greeting: 'Bonjour'
+    });
+  });
+
+  it('should return the YAML content in the default language if the specified language is not found', () => {
+    const yamlObject = {
+      greeting: {
+        translations: [
+          { language: 'en', text: 'Hello' },
+          { language: 'default', text: 'Hi' }
+        ]
+      }
+    };
+    const result = yamlTranslate.getYamlContent(yamlObject, 'fr');
+    expect(result).toEqual({
+      greeting: 'Hi'
+    });
+  });
+
+  it('should handle nested YAML objects', () => {
+    const yamlObject = {
+      greeting: {
+        translations: [
+          { language: 'en', text: 'Hello' },
+          { language: 'fr', text: 'Bonjour' },
+          { language: 'default', text: 'Hi' }
+        ]
+      },
+      farewell: {
+        translations: [
+          { language: 'en', text: 'Goodbye' },
+          { language: 'fr', text: 'Au revoir' },
+          { language: 'default', text: 'Bye' }
+        ]
+      }
+    };
+    const result = yamlTranslate.getYamlContent(yamlObject, 'en');
+    expect(result).toEqual({
+      greeting: 'Hello',
+      farewell: 'Goodbye'
+    });
+  });
+
+  it('should handle YAML objects without translations', () => {
+    const yamlObject = {
+      greeting: 'Hello',
+      farewell: 'Goodbye'
+    };
+    const result = yamlTranslate.getYamlContent(yamlObject, 'en');
+    expect(result).toEqual({
+      greeting: 'Hello',
+      farewell: 'Goodbye'
+    });
+  });
+
+  it('should return the correct YAML content for language de_DE (testfile1)', () => {
+    const inputFilePath = path.join(__dirname, 'fixtures', 'testfile1-input.yaml');
+    const outputFilePath = path.join(__dirname, 'fixtures', 'testfile1-output.yaml');
+
+    const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
+    const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
+
+    const yamlObject = yaml.load(inputYaml) as any;
+    const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+
+    const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
+    expect(result).toEqual(expectedOutputObject);
+  });
+
+  it('should return the correct YAML content for language de_DE (testfile2)', () => {
+    const inputFilePath = path.join(__dirname, 'fixtures', 'testfile2-input.yaml');
+    const outputFilePath = path.join(__dirname, 'fixtures', 'testfile2-output.yaml');
+
+    const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
+    const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
+
+    const yamlObject = yaml.load(inputYaml) as any;
+    const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+
+    const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
+    expect(result).toEqual(expectedOutputObject);
+  });
+
+  // Add test cases for testfile3-input.yaml
+  const languages = ['en_EN', 'de_DE', 'fr_FR', 'es_ES', undefined];
+  languages.forEach((language) => {
+    const langLabel = language || 'default';
+    it(`should return the correct YAML content for language ${langLabel} (testfile3)`, () => {
+      const inputFilePath = path.join(__dirname, 'fixtures', 'testfile3-input.yaml');
+      const outputFilePath = path.join(__dirname, `fixtures/testfile3-output-${langLabel}.yaml`);
+
+      const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
+      const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
+
+      const yamlObject = yaml.load(inputYaml) as any;
+      const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+
+      const result = yamlTranslate.getYamlContent(yamlObject, language);
+      expect(result).toEqual(expectedOutputObject);
+    });
+  });
+});
