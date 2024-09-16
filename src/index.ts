@@ -23,7 +23,7 @@ export class YamlTranslate {
                 yamlObject.set(key, this.changeYamlLanguage(value, destLg))
             }
         }
-        else if (typeof yamlObject === 'object') {
+        else if (typeof yamlObject === 'object' && yamlObject !== null) {
             for (var key in yamlObject) {
                 if (yamlObject[key] === null) continue
                 if (typeof yamlObject[key] === 'object' && !("translations" in yamlObject[key])) {
