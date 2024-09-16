@@ -110,9 +110,23 @@ describe('YamlTranslate', () => {
       });
     });
 
-    it('should return the correct YAML content for language de_DE', () => {
+    it('should return the correct YAML content for language de_DE (testfile1)', () => {
         const inputFilePath = path.join(__dirname, 'fixtures', 'testfile1-input.yaml');
         const outputFilePath = path.join(__dirname, 'fixtures', 'testfile1-output.yaml');
+    
+        const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
+        const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
+    
+        const yamlObject = yaml.load(inputYaml) as any;
+        const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+    
+        const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
+        expect(result).toEqual(expectedOutputObject);
+      });
+
+      it('should return the correct YAML content for language de_DE (testfile2)', () => {
+        const inputFilePath = path.join(__dirname, 'fixtures', 'testfile2-input.yaml');
+        const outputFilePath = path.join(__dirname, 'fixtures', 'testfile2-output.yaml');
     
         const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
         const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');

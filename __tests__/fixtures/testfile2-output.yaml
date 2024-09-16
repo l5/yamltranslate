@@ -1,0 +1,25 @@
+page:
+  title: Hilfe
+  other:
+    deeper:
+      nestled:
+        description: |
+          Unser äußerst hilfreicher Hilfebereich unterstützt Anwendungsnutzer auf hilfreiche Weise.
+  metadata:
+    author: Hans Müller
+    created: 2023-10-01
+    tags:
+      - hilfe
+      - unterstützung
+  content:
+    sections:
+      - title: Einführung
+        body: |
+          Willkommen im Hilfebereich. Hier finden Sie alle Informationen, die Sie benötigen.
+      - title: Häufig gestellte Fragen
+        body: |
+          Hier sind einige häufig gestellte Fragen und deren Antworten.
+  footer:
+    contact: Kontaktieren Sie uns
+    address: Hauptstraße 123, Irgendwo, Deutschland
+    phone: +49-800-555-1234
