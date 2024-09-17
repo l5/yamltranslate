@@ -104,11 +104,73 @@ page:
 
 The package is available at https://www.npmjs.com/package/yamltranslate ; please follow the usual instructions to install an npm package.
 
-Example:
-
+## Installation:
 ```
 npm i yamltranslate
 ```
+## Usage
+### Using `import`
+```
+// Import the YamlTranslate class
+import { YamlTranslate } from 'path-to-your-module/index.js';
+
+// Create an instance of YamlTranslate
+const yamlTranslator = new YamlTranslate();
+
+// Add a language to the used list
+yamlTranslator.addLanguageToUsedList('en');
+
+// Get the list of available languages
+const languages = yamlTranslator.getAvailableLanguageList();
+console.log(languages); // Output: ['en']
+
+// Example YAML object
+const yamlObject = {
+    key1: {
+        translations: [
+            { language: 'en', text: 'Hello' },
+            { language: 'es', text: 'Hola' },
+            { language: 'default', text: 'Hello' }
+        ]
+    }
+};
+
+// Get YAML content in a specific language
+const translatedYaml = yamlTranslator.getYamlContent(yamlObject, 'es');
+console.log(translatedYaml);
+```
+
+### Using `require`
+```
+// Require the YamlTranslate class
+const { YamlTranslate } = require('./path-to-your-module/index.js');
+
+// Create an instance of YamlTranslate
+const yamlTranslator = new YamlTranslate();
+
+// Add a language to the used list
+yamlTranslator.addLanguageToUsedList('en');
+
+// Get the list of available languages
+const languages = yamlTranslator.getAvailableLanguageList();
+console.log(languages); // Output: ['en']
+
+// Example YAML object
+const yamlObject = {
+    key1: {
+        translations: [
+            { language: 'en', text: 'Hello' },
+            { language: 'es', text: 'Hola' },
+            { language: 'default', text: 'Hello' }
+        ]
+    }
+};
+
+// Get YAML content in a specific language
+const translatedYaml = yamlTranslator.getYamlContent(yamlObject, 'es');
+console.log(translatedYaml);
+```
+
 
 # Tech Data
 
