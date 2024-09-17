@@ -1,6 +1,6 @@
 {
   "name": "yamltranslate",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Condensing a multilingual yaml file into a single language yaml file",
   "types": "./dist/index.d.ts",
   "type": "module",
