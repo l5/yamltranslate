@@ -110,8 +110,24 @@ Example:
 npm i yamltranslate
 ```
 
-Usage example:
+# Tech Data
+
+Intended compatibility: ES and CommonJS
+
+# Contributing / Developing this library
+
+## Test
 
 ```
+npm run test
+```
+
+## Build
 
 ```
+npm run build
+```
+
+## Bump Version
+
+manually edit `package.json` (1x) and `package-lock.json`
