@@ -1,4 +1,5 @@
-import { YamlTranslate } from '../src/index';
+import { YamlTranslate, YamlObject } from '../src/index';
+
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
@@ -44,7 +45,7 @@ describe('YamlTranslate', () => {
   });
 
   it('should return the YAML content in the specified language', () => {
-    const yamlObject = {
+    const yamlObject: YamlObject = {
       greeting: {
         translations: [
           { language: 'en', text: 'Hello' },
@@ -117,8 +118,8 @@ describe('YamlTranslate', () => {
     const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
     const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
 
-    const yamlObject = yaml.load(inputYaml) as any;
-    const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+    const yamlObject: YamlObject = yaml.load(inputYaml) as YamlObject;
+    const expectedOutputObject: YamlObject = yaml.load(expectedOutputYaml) as YamlObject;
 
     const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
     expect(result).toEqual(expectedOutputObject);
@@ -131,8 +132,8 @@ describe('YamlTranslate', () => {
     const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
     const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
 
-    const yamlObject = yaml.load(inputYaml) as any;
-    const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+    const yamlObject: YamlObject = yaml.load(inputYaml) as YamlObject;
+    const expectedOutputObject: YamlObject = yaml.load(expectedOutputYaml) as YamlObject;
 
     const result = yamlTranslate.getYamlContent(yamlObject, 'de_DE');
     expect(result).toEqual(expectedOutputObject);
@@ -149,8 +150,8 @@ describe('YamlTranslate', () => {
       const inputYaml = fs.readFileSync(inputFilePath, 'utf8');
       const expectedOutputYaml = fs.readFileSync(outputFilePath, 'utf8');
 
-      const yamlObject = yaml.load(inputYaml) as any;
-      const expectedOutputObject = yaml.load(expectedOutputYaml) as any;
+      const yamlObject: YamlObject = yaml.load(inputYaml) as YamlObject;
+      const expectedOutputObject: YamlObject = yaml.load(expectedOutputYaml) as YamlObject;
 
       const result = yamlTranslate.getYamlContent(yamlObject, language);
       expect(result).toEqual(expectedOutputObject);

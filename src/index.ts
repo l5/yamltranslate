@@ -9,7 +9,7 @@ interface Translatable {
 }
 
 type YamlValue = string | number | boolean | null | YamlObject | YamlObject[];
-type YamlObject = { [key: string]: YamlValue } | Map<string, YamlValue>;
+export type YamlObject = { [key: string]: YamlValue } | Map<string, YamlValue>;
 
 
 export class YamlTranslate {
