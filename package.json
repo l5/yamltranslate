@@ -1,13 +1,14 @@
 {
   "name": "yamltranslate",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Condensing a multilingual yaml file into a single language yaml file",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig.esm.json",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
@@ -23,7 +24,8 @@
     "url": "https://github.com/l5/yamltranslate"
   },
   "files": [
-    "dist",
+    "dist/cjs",
+    "dist/esm",
     "README.md",
     "package.json"
   ],
@@ -45,8 +47,5 @@
   "homepage": "https://github.com/l5/yamltranslate#readme",
   "bugs": {
     "url": "https://github.com/l5/yamltranslate/issues"
-  },
-  "dependencies": {
-    "js-yaml": "^4.1.0"
   }
 }
