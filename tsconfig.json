@@ -4,9 +4,9 @@
   ],
   "compilerOptions": {
     "target": "es2015",
-    "module": "es2015",
+    "module": "commonjs",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./dist/cjs",
     "lib": ["es2016"],
     "noEmit": false,
     "strict": true,
