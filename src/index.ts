@@ -1,74 +1,87 @@
+interface Translation {
+    language: string;
+    text?: string;
+    suggestion?: string;
+}
+
+interface Translatable {
+    translations: Translation[] | { [key: string]: string };
+}
+
+type YamlObject = { [key: string]: any } | Map<any, any>;
+
 export class YamlTranslate {
+    private allLanguagesUsed: string[] = [];
 
-    private allLanguagesUsed:string[] = []
-
-
-    private addLanguageToUsedList(languageName:string) {
-        if (!(this.allLanguagesUsed.includes(languageName))) {
-            this.allLanguagesUsed.push(languageName)
+    private addLanguageToUsedList(languageName: string): void {
+        if (!this.allLanguagesUsed.includes(languageName)) {
+            this.allLanguagesUsed.push(languageName);
         }
     }
-    public getAvailableLanguageList() {
-        return this.allLanguagesUsed
+
+    public getAvailableLanguageList(): string[] {
+        return this.allLanguagesUsed;
     }
-    public getYamlContent(yamlObject: any, destLg: string|undefined) {
-        return this.changeYamlLanguage(yamlObject, destLg)
+
+    public getYamlContent(yamlObject: YamlObject, destLg?: string): YamlObject {
+        return this.changeYamlLanguage(yamlObject, destLg);
     }
-    private changeYamlLanguage(yamlObject: any, destLg: string|undefined) {
-        if (destLg === undefined) {
-            destLg = 'default'
-        }
+
+    private changeYamlLanguage(yamlObject: YamlObject, destLg: string = 'default'): YamlObject {
         if (yamlObject instanceof Map) {
             for (const [key, value] of yamlObject.entries()) {
-                yamlObject.set(key, this.changeYamlLanguage(value, destLg))
+                yamlObject.set(key, this.changeYamlLanguage(value, destLg));
             }
-        }
-        else if (typeof yamlObject === 'object' && yamlObject !== null) {
-            for (var key in yamlObject) {
-                if (yamlObject[key] === null) continue
-                if (typeof yamlObject[key] === 'object' && !("translations" in yamlObject[key])) {
-                    this.changeYamlLanguage(yamlObject[key], destLg)
-                }
-                else if (typeof yamlObject[key] === 'object' && "translations" in yamlObject[key]) {
-                    if (Array.isArray(yamlObject[key]["translations"])) { // Type 2
-                        // search for the right language, or select default
-                        var translations = yamlObject[key]["translations"]
-                        var lang_id:number|null = null
-                        var default_id = 0
-                        for (var i = 0; i < translations.length; i++) {
-                            this.addLanguageToUsedList(translations[i]['language'])
-                            if ("language" in translations[i] && translations[i]['language'] == destLg) {
-                                lang_id = i
-                                // break
-                            }
-                            if ("language" in translations[i] && translations[i]['language'] == "default") {
-                                default_id = i
-                            }
-                        }
-                        (lang_id === null) ? lang_id = default_id : null;
-                        (default_id === null) ? lang_id = 0 : null;
+        } else if (typeof yamlObject === 'object' && yamlObject !== null) {
+            for (const key in yamlObject) {
+                if (yamlObject[key] === null) continue;
 
-                        if ("text" in translations[lang_id]) {
-                            yamlObject[key] = translations[lang_id]["text"]
-                        } else if ("suggestion" in translations[lang_id]) {
-                            yamlObject[key] = translations[lang_id]["suggestion"]
+                if (typeof yamlObject[key] === 'object' && !('translations' in yamlObject[key])) {
+                    this.changeYamlLanguage(yamlObject[key], destLg);
+                } else if (typeof yamlObject[key] === 'object' && 'translations' in yamlObject[key]) {
+                    const translatable = yamlObject[key] as Translatable;
+
+                    if (Array.isArray(translatable.translations)) {
+                        const translations = translatable.translations as Translation[];
+                        let langId: number | null = null;
+                        let defaultId = 0;
+
+                        for (let i = 0; i < translations.length; i++) {
+                                const myLg:string|undefined = translations[i]?.language;
+                                if (myLg) {
+                                    if (translations[i]?.language !== undefined) {
+                                        this.addLanguageToUsedList(myLg);
+                                    }
+                                    if (translations[i]?.language === destLg) {
+                                        langId = i;
+                                    }
+                                    if (translations[i]?.language === 'default') {
+                                        defaultId = i;
+                                    }
+                                }
                         }
-                    } else { // Type 1
-                        if (yamlObject[key]["translations"] === null) continue
-                        for (var t in yamlObject[key]["translations"]) {
-                            this.addLanguageToUsedList(t)
+
+                        langId = langId ?? defaultId;
+                        const myTranslation: Translation|undefined = translations[langId];
+                        if (myTranslation) {
+                            if ('text' in myTranslation) {
+                                yamlObject[key] = myTranslation.text;
+                            } else if ('suggestion' in myTranslation) {
+                                yamlObject[key] = myTranslation.suggestion;
+                            }
                         }
-                        if (destLg in yamlObject[key]["translations"]) {
-                            yamlObject[key] = yamlObject[key]["translations"][destLg]
-                        } else {
-                            yamlObject[key] = yamlObject[key]["translations"]["default"]
+                    } else {
+                        const translations = translatable.translations as { [key: string]: string };
+                        for (const t in translations) {
+                            this.addLanguageToUsedList(t);
                         }
+                        yamlObject[key] = translations[destLg] ?? translations['default'];
                     }
                 }
             }
         }
-        return yamlObject
+        return yamlObject;
     }
 }
 
-export default YamlTranslate
+export default YamlTranslate;
