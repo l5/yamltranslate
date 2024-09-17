@@ -1,0 +1,34 @@
+page:
+  title: Help
+  other:
+    deeper:
+      righthere: Milli Vanilli
+      cost: 50
+      nestled:
+        description: |
+          Our very helpful Help section helps helping application consumers in a helpful way.
+          This section includes detailed guides and FAQs to assist users.
+  metadata:
+    author: Hans Müller
+    created: 2023-10-01
+    version: 1.0
+    isPublished: true
+    tags:
+      - help
+      - support
+  content:
+    sections:
+      - title: Introduction
+        body: |
+          Willkommen im Hilfebereich. Hier finden Sie alle Informationen, die Sie benötigen.
+          Dieser Abschnitt soll umfassende Unterstützung bieten.
+      - title: FAQ
+        body: |
+          Here are some frequently asked questions and their answers.
+          If you have more questions, feel free to contact us.
+      - title: No Translations Here
+        body: This section has no translations.
+  footer:
+    contact: Contact Us
+    address: 123 Main St, Anytown, USA
+    phone: +1-800-555-1234

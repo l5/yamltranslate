@@ -1,0 +1,77 @@
+page:
+  title: 
+    translations:
+      default: Help
+      de_DE: Hilfe
+      fr_FR: Aide
+  other:
+    deeper:
+      nestled:
+        description:
+          translations:
+            default: |
+              Our very helpful Help section helps helping application consumers in a helpful way.
+            de_DE: |
+              Unser äußerst hilfreicher Hilfebereich unterstützt Anwendungsnutzer auf hilfreiche Weise.
+            fr_FR: |
+              Notre section d'aide très utile aide les utilisateurs d'applications à s'en servir de manière utile.
+  metadata:
+    author:
+      translations:
+        default: John Doe
+        de_DE: Hans Müller
+        fr_FR: Jean Dupont
+    created: 2023-10-01
+    tags:
+      - translations:
+          default: help
+          de_DE: hilfe
+          fr_FR: aide
+      - translations:
+          default: support
+          de_DE: unterstützung
+          fr_FR: soutien
+  content:
+    sections:
+      - title:
+          translations:
+            default: Introduction
+            de_DE: Einführung
+            fr_FR: Introduction
+        body:
+          translations:
+            default: |
+              Welcome to the help section. Here you will find all the information you need.
+            de_DE: |
+              Willkommen im Hilfebereich. Hier finden Sie alle Informationen, die Sie benötigen.
+            fr_FR: |
+              Bienvenue dans la section d'aide. Vous y trouverez toutes les informations dont vous avez besoin.
+      - title:
+          translations:
+            default: FAQ
+            de_DE: Häufig gestellte Fragen
+            fr_FR: Questions fréquentes
+        body:
+          translations:
+            default: |
+              Here are some frequently asked questions and their answers.
+            de_DE: |
+              Hier sind einige häufig gestellte Fragen und deren Antworten.
+            fr_FR: |
+              Voici quelques questions fréquemment posées et leurs réponses.
+  footer:
+    contact:
+      translations:
+        default: Contact Us
+        de_DE: Kontaktieren Sie uns
+        fr_FR: Contactez-nous
+    address:
+      translations:
+        default: 123 Main St, Anytown, USA
+        de_DE: Hauptstraße 123, Irgendwo, Deutschland
+        fr_FR: 123 rue Principale, N'importe quelle ville, France
+    phone:
+      translations:
+        default: +1-800-555-1234
+        de_DE: +49-800-555-1234
+        fr_FR: +33-800-555-1234
